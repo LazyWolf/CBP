@@ -1,0 +1,23 @@
+﻿@model EmployeeViewModel
+
+@using (Html.BeginForm(method: FormMethod.Post))
+{
+    <p style="display: grid; grid-template-columns: repeat(2, max-content); gap: .5rem;">
+        <label>
+            First Name
+            <br />
+            @Html.TextBoxFor(m => m.FirstName)
+        </label>
+        <label>
+            Last Name
+            <br />
+            @Html.TextBoxFor(m => m.LastName)
+        </label>
+        <label>
+            Email
+            <br />
+            @Html.TextBoxFor(m => m.Email)
+        </label>
+    </p>
+    <button type="submit">Submit</button>
+}

@@ -1,0 +1,15 @@
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\bin\Debug\net8.0\CBP.Services.deps.json
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\bin\Debug\net8.0\CBP.Services.dll
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\bin\Debug\net8.0\CBP.Services.pdb
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\bin\Debug\net8.0\CBP.Data.dll
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\bin\Debug\net8.0\CBP.Data.pdb
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\obj\Debug\net8.0\CBP.Services.csproj.AssemblyReference.cache
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\obj\Debug\net8.0\CBP.Services.GeneratedMSBuildEditorConfig.editorconfig
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\obj\Debug\net8.0\CBP.Services.AssemblyInfoInputs.cache
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\obj\Debug\net8.0\CBP.Services.AssemblyInfo.cs
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\obj\Debug\net8.0\CBP.Services.csproj.CoreCompileInputs.cache
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\obj\Debug\net8.0\CBP.Services.csproj.CopyComplete
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\obj\Debug\net8.0\CBP.Services.dll
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\obj\Debug\net8.0\refint\CBP.Services.dll
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\obj\Debug\net8.0\CBP.Services.pdb
+Z:\Documents\Programming Stuff\CBP\CBP\CBP.Services\obj\Debug\net8.0\ref\CBP.Services.dll
