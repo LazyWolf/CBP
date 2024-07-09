@@ -6,6 +6,11 @@ using System.Diagnostics;
 
 namespace CBP.Controllers
 {
+    // TODO: Video hosting
+    // TODO: Naming variables
+    // TODO: Logging logical steps
+    
+
     public class CompaniesController(ICompanyService CompanyService, ILogger<CompaniesController> logger) : Controller
     {
         private readonly ICompanyService _companyService = CompanyService;
@@ -21,7 +26,7 @@ namespace CBP.Controllers
         {
             try
             {
-                var entity = _companyService.Add(model);
+                var entity = _companyService.AddCorporation(model);
                 return Json(new { entity.Id, entity.Name, entity.BusinessType });
             }
             catch (HandledException ex)

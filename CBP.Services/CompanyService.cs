@@ -18,13 +18,14 @@ namespace CBP.Services
             _logger = logger;
         }
 
-        public IQueryable<Company> Get()
+        public List<Company> Get()
         {
-            return _ctx.Companies;
+            return _ctx.Companies.ToList();
         }
 
-        public Company? Get(long id)
+        public Company Get(long id)
         {
+            // TODO: Don't ignore the green squigglies. Null safety is important
             return _ctx.Companies.Find(id);
         }
 
@@ -38,7 +39,14 @@ namespace CBP.Services
             return _ctx.Companies.Where(c => EF.Functions.Like(c.Name, $"%{name}%"));
         }
 
-        public Company Add(CompanyViewModel model)
+        // TODO: Decorating methods is helpful
+        /// <summary>
+        /// Add a corporation
+        /// </summary>
+        /// <param name="model">Model to create new company from</param>
+        /// <param name="model">Business type of company</param>
+        /// <returns></returns>
+        public Company AddCorporation(CompanyViewModel model)
         {
             Validate(model);
 
@@ -46,13 +54,47 @@ namespace CBP.Services
             {
                 Name = model.Name,
                 Established = DateTime.UtcNow,
-                BusinessType = model.BusinessType,
+                BusinessType = "Corporation", // TODO: Avoid magic strings
             }).Entity;
 
             _ctx.SaveChanges();
 
             return entity;
         }
+
+        public Company AddLimitedLiabilityCompany(CompanyViewModel model)
+        {
+            // TODO: Avoid code duplication when possible
+            Validate(model);
+
+            var entity = _ctx.Companies.Add(new Company
+            {
+                Name = model.Name,
+                Established = DateTime.UtcNow,
+                BusinessType = "LimitedLiabilityCompany",
+            }).Entity;
+
+            _ctx.SaveChanges();
+
+            return entity;
+        }
+
+        public Company AddNonProfitCompany(CompanyViewModel model)
+        {
+            Validate(model);
+
+            var entity = _ctx.Companies.Add(new Company
+            {
+                Name = model.Name,
+                Established = DateTime.UtcNow,
+                BusinessType = "NonProfit",
+            }).Entity;
+
+            _ctx.SaveChanges();
+
+            return entity;
+        }
+
 
         private void Validate(CompanyViewModel model)
         {

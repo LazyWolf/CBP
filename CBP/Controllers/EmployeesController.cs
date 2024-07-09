@@ -3,6 +3,7 @@ using CBP.Services.Extensions;
 using CBP.Services.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace CBP.Controllers
 {
@@ -25,17 +26,49 @@ namespace CBP.Controllers
         {
             try
             {
+                // TODO: Leave heavy logic to services
+                var errors = new List<string>();
+
+                // First Name
+                if (String.IsNullOrWhiteSpace(model.FirstName))
+                {
+                    errors.Add("First name must not be empty");
+                }
+
+                // Last Name
+                if (String.IsNullOrWhiteSpace(model.LastName))
+                {
+                    errors.Add("Last name must not be empty");
+                }
+
+                // Email
+                if (String.IsNullOrWhiteSpace(model.Email))
+                {
+                    errors.Add("Email name must not be empty");
+                }
+                else if (!new Regex(@"^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$").IsMatch(model.Email))
+                {
+                    errors.Add("Please type a valid email address");
+                }
+                else if (Get(model.Email) is not null)
+                {
+                    errors.Add("A user with that email already exists");
+                }
+
+                // Throw if errors
+                if (errors.Any())
+                {
+                    throw new HandledException("One or more errors occurred", errors);
+                }
+
                 var entity = _employeeService.Add(model);
                 return Json(new { entity.Id, entity.FirstName, entity.LastName, entity.Email });
             }
-            catch (HandledException ex)
-            {
-                return Json(new { ex.Message, ex.Errors });
-            }
             catch (Exception ex)
             {
+                // TODO: Don't return raw exceptions to the front-end
                 _logger.LogInformation(ex, "Add Employee Post error");
-                return Json(new { message = "There was an unexpected error" });
+                return Json(new { message = ex.Message });
             }
         }
 

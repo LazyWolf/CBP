@@ -5,9 +5,11 @@ namespace CBP.Services
 {
     public interface ICompanyService
     {
-        Company Add(CompanyViewModel model);
+        Company AddCorporation(CompanyViewModel model);
+        Company AddLimitedLiabilityCompany(CompanyViewModel model);
+        Company AddNonProfitCompany(CompanyViewModel model);
         IQueryable<Company> Find(string name);
-        IQueryable<Company> Get();
+        List<Company> Get();
         Company? Get(long id);
         Company? Get(string name);
     }

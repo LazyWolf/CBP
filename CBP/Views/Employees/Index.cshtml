@@ -1,5 +1,76 @@
 ﻿@model EmployeeViewModel
 
+@{
+    // TODO: Use forms
+    // TODO: Try to use architectural tools
+}
+<form onsubmit="submitForm(this)">
+    <label>
+        First Name
+        <input type="text" name="firstName" />
+    </label>
+    <label>
+        Last Name
+        <input type="text" name="lastName" />
+    </label>
+    <label>
+        Email
+        <input type="text" name="email" />
+    </label>
+    <button type="submit">Submit</button>
+</form>
+<script>
+    @{
+        // TODO: Forget console.log exists
+        // TODO: Move shared fucntions/styles to global files
+    }
+    function myFunc(param1, param2) {
+        console.debug(param1);
+        console.debug(param2);
+        return param1 + param2;
+    }
+
+    function submitForm(form) {
+        var firstName = $('#firstName').val();
+        var lastName = $('#lastName').val();
+        var email = $('#email').val();
+        var formData = {
+            firstName = firstName,
+            lastName = lastName,
+            email = email
+        };
+
+        $ajax({
+            type: 'POST',
+            url: '/Home/TestPost/',
+            data: formData,
+            success: function (response) {
+                // handle success response
+            },
+            error: function (xhrResponse) {
+                // handle error response
+            }
+        })
+
+        console.debug(formValues);
+    }
+
+    function submitForm(form) {
+        var formData = Object.fromEntries(new FormData(form));
+        $.post('/Home/TestPost/', formData)
+         .done(ajaxSuccessHandler)
+         .fail(ajaxErrorHandler); 
+    }
+
+    function ajaxSuccessHandler(response) {
+        // handle success response
+    }
+
+    function ajaxErrorHandler(xhrResponse) {
+        // handle success response
+    }
+</script>
+
 @using (Html.BeginForm(method: FormMethod.Post))
 {
     <p style="display: grid; grid-template-columns: repeat(2, max-content); gap: .5rem;">
