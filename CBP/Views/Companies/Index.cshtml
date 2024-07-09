@@ -1,10 +1,11 @@
-﻿@using CBP.Data
+﻿@{
+    ViewData["Title"] = "Companies";
+}
+
+@using CBP.Data
 @using System.Linq
 @model CompanyViewModel
 
-@{
-    // TODO: Try to use architectural tools
-}
 @using (Html.BeginForm(method: FormMethod.Post))
 {
     <p style="display: grid; grid-template-columns: repeat(2, max-content); gap: .5rem;">
