@@ -18,6 +18,15 @@
             <br />
             @Html.TextBoxFor(m => m.Email)
         </label>
+        <label>
+            Type
+            <br />
+            @Html.DropDownListFor(m => m.CompanyId, new SelectList(
+                Model.Companies.ToDictionary(c => c.Id, c => c.Name),
+                "Key",
+                "Value"
+            ))
+        </label>
     </p>
     <button type="submit">Submit</button>
 }

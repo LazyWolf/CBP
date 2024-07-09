@@ -2772,11 +2772,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Z:\\Documents\\Programming Stuff\\CBP\\CBP\\CBP.Services\\CBP.Services.csproj",
+      "projectUniqueName": "Z:\\Documents\\Programming Stuff\\CBP\\CBP.Services\\CBP.Services.csproj",
       "projectName": "CBP.Services",
-      "projectPath": "Z:\\Documents\\Programming Stuff\\CBP\\CBP\\CBP.Services\\CBP.Services.csproj",
+      "projectPath": "Z:\\Documents\\Programming Stuff\\CBP\\CBP.Services\\CBP.Services.csproj",
       "packagesPath": "C:\\Users\\lazy_\\.nuget\\packages\\",
-      "outputPath": "Z:\\Documents\\Programming Stuff\\CBP\\CBP\\CBP.Services\\obj\\",
+      "outputPath": "Z:\\Documents\\Programming Stuff\\CBP\\CBP.Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lazy_\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2793,8 +2793,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "Z:\\Documents\\Programming Stuff\\CBP\\CBP\\CBP.Data\\CBP.Data.csproj": {
-              "projectPath": "Z:\\Documents\\Programming Stuff\\CBP\\CBP\\CBP.Data\\CBP.Data.csproj"
+            "Z:\\Documents\\Programming Stuff\\CBP\\CBP.Data\\CBP.Data.csproj": {
+              "projectPath": "Z:\\Documents\\Programming Stuff\\CBP\\CBP.Data\\CBP.Data.csproj"
             }
           }
         }

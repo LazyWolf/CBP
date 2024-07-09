@@ -6,14 +6,18 @@ using System.Diagnostics;
 
 namespace CBP.Controllers
 {
-    public class EmployeesController(IEmployeeService employeeService, ILogger<EmployeesController> logger) : Controller
+    public class EmployeesController(IEmployeeService employeeService, ICompanyService companyService, ILogger<EmployeesController> logger) : Controller
     {
         private readonly IEmployeeService _employeeService = employeeService;
+        private readonly ICompanyService _companyService = companyService;
         private readonly ILogger<EmployeesController> _logger = logger;
 
         public IActionResult Index()
         {
-            return View(new EmployeeViewModel());
+            return View(new EmployeeViewModel
+            {
+                Companies = _companyService.Get(),
+            });
         }
 
         [HttpPost]
