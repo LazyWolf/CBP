@@ -1,6 +1,7 @@
 using CBP.Services;
 using CBP.Services.Extensions;
 using CBP.Services.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -22,6 +23,7 @@ namespace CBP.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "Admin")] // TODO: Guarding sensitive areas in applications - least privilege
         public JsonResult Index(EmployeeViewModel model)
         {
             try

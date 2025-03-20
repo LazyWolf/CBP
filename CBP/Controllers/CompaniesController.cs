@@ -1,6 +1,7 @@
 using CBP.Services;
 using CBP.Services.Extensions;
 using CBP.Services.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -22,6 +23,7 @@ namespace CBP.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public JsonResult Index(CompanyViewModel model)
         {
             try
