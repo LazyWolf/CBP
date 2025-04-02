@@ -5,9 +5,13 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+// TODO: Avoid hard-coded app settings
+// TODO: Storing Sensitive Credentials
+// (see appsettings.Development.json)
 // Add services to the container.
 builder.Services.AddDbContext<IDataContext, DataContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CBP")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Server=(localdb)\\test; Database=CBP; Trusted_Connection=true; Trust Server Certificate=true; MultipleActiveResultSets=true; Integrated Security=true;")));
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services

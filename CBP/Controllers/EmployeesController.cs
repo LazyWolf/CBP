@@ -23,7 +23,9 @@ namespace CBP.Controllers
         }
 
         [HttpPost]
-        [Authorize(Policy = "Admin")] // TODO: Guarding sensitive areas in applications - least privilege
+        [Authorize(Policy = "Admin")]
+        // TODO: Guarding sensitive areas in applications - principle of least privilege
+        // TODO: Where Auth is a concern, it should be the rule rather than the exception
         public JsonResult Index(EmployeeViewModel model)
         {
             try

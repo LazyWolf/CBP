@@ -39,7 +39,6 @@ namespace CBP.Services
             return _ctx.Companies.Where(c => EF.Functions.Like(c.Name, $"%{name}%"));
         }
 
-        // TODO: Decorating methods is helpful
         /// <summary>
         /// Add a corporation
         /// </summary>
@@ -95,6 +94,31 @@ namespace CBP.Services
             return entity;
         }
 
+        public CompanyViewModel? UpdateCompanyEmployees(CompanyViewModel companyModel)
+        {
+            // TODO: Avoid over-nesting with defensive coding
+            if (companyModel != null)
+            {
+                if (companyModel.Employees.Any())
+                {
+                    foreach(var employeeKey in companyModel.Employees.Select(e => e.Key))
+                    {
+                        // Do something with employees?
+                        var empoloyee = _ctx.Employees.Find(employeeKey);
+                        if (empoloyee == null)
+                        {
+                            _logger.LogError("Employee not found with Key {Key}", employeeKey);
+                            continue;
+                        }
+                        _ctx.Employees.Update(empoloyee);
+                    }
+
+                    _ctx.SaveChanges();
+                }
+            }
+
+            return companyModel;
+        }
 
         private void Validate(CompanyViewModel model)
         {
