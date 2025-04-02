@@ -125,6 +125,7 @@ namespace CBP.Services
             var errors = new List<string>();
 
             // Name
+            // TODO: Using IsNullOrWhiteSpace vs IsNullOrEmpty where relevant
             if (String.IsNullOrWhiteSpace(model.Name))
             {
                 errors.Add("Name must not be empty");

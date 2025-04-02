@@ -7,10 +7,12 @@ using System.Diagnostics;
 
 namespace CBP.Controllers
 {
+    // General
     // TODO: Video hosting
     // TODO: Naming variables
     // TODO: Logging logical steps
     //       https://bitbucket.org/saberinsystems/tpa-tnet/src/6fc47e9483bb78279015de2ba71f50504a2d0eb2/ReportWorker/ReportWorker/Services/ReportExecutionService.cs#lines-319
+    // TODO: Commit messages - briefly, what was changed
 
     public class CompaniesController(ICompanyService CompanyService, ILogger<CompaniesController> logger) : Controller
     {
