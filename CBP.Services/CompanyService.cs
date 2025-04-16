@@ -2,6 +2,7 @@
 using CBP.Data.Models;
 using CBP.Services.Extensions;
 using CBP.Services.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -64,6 +65,7 @@ namespace CBP.Services
         public Company AddLimitedLiabilityCompany(CompanyViewModel model)
         {
             // TODO: Avoid code duplication when possible
+            // https://bitbucket.org/saberinsystems/sar-msrb-v3.1/commits/7df5b094dcf0fd255fcc3c5d7cd7cf91a03b9030#Lmsrb.services/Services/TradeService.csT160
             Validate(model);
 
             var entity = _ctx.Companies.Add(new Company
@@ -140,6 +142,31 @@ namespace CBP.Services
             {
                 throw new HandledException("One or more errors occurred", errors);
             }
+        }
+
+        public void SqlCommand(string userInput)
+        {
+            // EG1
+            using (SqlConnection cn1 = new SqlConnection("Data Source=svr01;Initial Catalog=XYZ;Persist Security Info=True;User ID=sa;Password=SomePassword"))
+            {
+                cn1.Open();
+                using (SqlCommand cm1 = new SqlCommand())
+                {
+                    cm1.Connection = cn1;
+                    cm1.CommandText = "INSERT INTO accountingfundfield([fund]) VALUES ('" + userInput + "')";
+                    // TODO: Avoid SQL Injection vulnerabilities
+                    // cm1.CommandText = "INSERT INTO accountingfundfield([fund]) VALUES (@fund)";
+                    // cm1.Parameters.AddWithValue("@fund", userInput);
+                    cm1.ExecuteNonQuery();
+                }
+            }
+
+            // EG2
+            var sql = "INSERT INTO accountingfundfield([fund]) VALUES ('" + userInput + "')";
+            _ctx.Database.ExecuteSqlRaw(sql);
+
+            // sql0 = "INSERT INTO accountingfundfield([fund]) VALUES (@p0)";
+            // _ctx.Database.ExecuteSqlRaw(sql, userInput);
         }
     }
 }
